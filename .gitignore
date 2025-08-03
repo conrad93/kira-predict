@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+*.log
+
+# Flask
+instance/
+*.db
+
+# Data
+backend/data/*.csv
+
+# Models
+*.joblib
+
+# IDE
+.vscode/
