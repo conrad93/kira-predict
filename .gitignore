@@ -1,18 +1,27 @@
-# Python
-__pycache__/
-*.pyc
-venv/
+# === General ===
 *.log
+*.pyc
+__pycache__/
+.env
+.env.*
 
-# Flask
-instance/
-*.db
+# === Python / Backend ===
+/backend/venv/
+/backend/__pycache__/
+/backend/*.pyc
+/backend/.mypy_cache/
+/backend/.pytest_cache/
+/backend/.coverage
+/backend/models/*.joblib
+/backend/data/*.csv
 
-# Data
-backend/data/*.csv
+# === Angular / Frontend ===
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.angular
+/frontend/.vscode
+/frontend/.env
 
-# Models
-*.joblib
-
-# IDE
-.vscode/
+# === System Files ===
+.DS_Store
+Thumbs.db
