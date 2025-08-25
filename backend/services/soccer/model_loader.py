@@ -3,9 +3,9 @@ from joblib import load
 _model_cache = {}
 
 MODEL_PATHS = {
-    "0": "models/model.joblib",
-    "1": "models/model_real.joblib",
-    "2": "models/model_v2.joblib"
+    "0": "models/soccer/model.joblib",
+    "1": "models/soccer/model_real.joblib",
+    "2": "models/soccer/model_v2.joblib"
 }
 
 def get_model(version):

@@ -4,7 +4,7 @@ import csv, os
 
 log_bp = Blueprint('log', __name__)
 
-@log_bp.route('/api/log', methods=['POST'])
+@log_bp.route('/log', methods=['POST'])
 def log_result():
     try:
         data = request.json
@@ -32,7 +32,7 @@ def log_result():
             "actual": actual_result
         }
 
-        log_file = 'data/future_results.csv'
+        log_file = 'data/soccer/future_results.csv'
         file_exists = os.path.isfile(log_file)
 
         with open(log_file, mode='a', newline='') as csvfile:

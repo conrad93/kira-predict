@@ -6,8 +6,8 @@ from sklearn.preprocessing import LabelEncoder
 import joblib
 import os
 
-matches_path = 'data/Matches.csv'
-future_path = 'data/future_results.csv'
+matches_path = 'data/soccer/Matches.csv'
+future_path = 'data/soccer/future_results.csv'
 
 df = pd.read_csv(matches_path, low_memory=False)
 df = df.dropna(subset=['FTResult'])
@@ -43,6 +43,9 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"✅ Retrained model — Accuracy: {accuracy:.2f}")
 
-joblib.dump(model, 'model_v2.joblib')
-joblib.dump(label_encoder, 'label_encoder.joblib')
+# Ensure models folder exists
+os.makedirs('models/soccer', exist_ok=True)
+
+joblib.dump(model, 'models/soccer/model_v2.joblib')
+joblib.dump(label_encoder, 'models/soccer/label_encoder.joblib')
 print("💾 Updated model and label encoder saved.")

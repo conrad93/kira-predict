@@ -3,7 +3,7 @@ import pandas as pd
 
 check_team_bp = Blueprint('check_team', __name__)
 
-@check_team_bp.route('/api/check_team', methods=['GET'])
+@check_team_bp.route('/check_team', methods=['GET'])
 def check_team():
     query = request.args.get('team')
     if not query:
@@ -19,7 +19,7 @@ def check_team():
     future_result = []
 
     try:
-        df_matches = pd.read_csv('data/Matches.csv', low_memory=False)
+        df_matches = pd.read_csv('data/soccer/Matches.csv', low_memory=False)
         matched_home = df_matches['HomeTeam'].dropna().apply(fuzzy_match)
         matched_away = df_matches['AwayTeam'].dropna().apply(fuzzy_match)
         matched_teams = pd.concat([
@@ -31,7 +31,7 @@ def check_team():
         print(f"Error reading Matches.csv: {e}")
 
     try:
-        df_future = pd.read_csv('data/future_results.csv')
+        df_future = pd.read_csv('data/soccer/future_results.csv')
         matched_home = df_future['home_team'].dropna().apply(fuzzy_match)
         matched_away = df_future['away_team'].dropna().apply(fuzzy_match)
         matched_teams = pd.concat([

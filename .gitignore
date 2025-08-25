@@ -12,8 +12,8 @@ __pycache__/
 /backend/.mypy_cache/
 /backend/.pytest_cache/
 /backend/.coverage
-/backend/models/*.joblib
-/backend/data/*.csv
+/backend/models/
+/backend/data/
 
 # === Angular / Frontend ===
 /frontend/node_modules/

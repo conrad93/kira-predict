@@ -2,7 +2,7 @@ from flask import jsonify
 import pandas as pd
 from joblib import load
 
-label_encoder = load('models/label_encoder.joblib')
+label_encoder = load('models/soccer/label_encoder.joblib')
 
 def predict_v0(model, data):
     team_goals = data.get('team_goals', 0)

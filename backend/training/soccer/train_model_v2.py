@@ -4,11 +4,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 import joblib
+import os
 
 # Load the data
-df = pd.read_csv('data/Matches.csv', low_memory=False)
+df = pd.read_csv('data/soccer/Matches.csv', low_memory=False)
 df = df.dropna(subset=['FTResult'])
-df = df.drop(columns=['Division', 'MatchDate', 'MatchTime', 'HTResult'])
+df = df.drop(columns=['Division', 'MatchDate', 'MatchTime', 'HTResult', 'FTHome', 'FTAway', 'HTHome', 'HTAway'], errors='ignore')
 
 # One-hot encode team names
 df = pd.get_dummies(df, columns=['HomeTeam', 'AwayTeam'])
@@ -34,7 +35,10 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"✅ Model trained — Accuracy: {accuracy:.2f}")
 
+# Ensure models folder exists
+os.makedirs('models/soccer', exist_ok=True)
+
 # Save model and encoder
-joblib.dump(model, 'model_v2.joblib')
-joblib.dump(label_encoder, 'label_encoder.joblib')
+joblib.dump(model, 'models/soccer/model_v2.joblib')
+joblib.dump(label_encoder, 'models/soccer/label_encoder.joblib')
 print("💾 Model and label encoder saved.")

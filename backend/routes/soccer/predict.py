@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify
-from services import get_model, predict_v0, predict_v1, predict_v2
+from services.soccer import get_model, predict_v0, predict_v1, predict_v2
 
 predict_bp = Blueprint('predict', __name__)
 
-@predict_bp.route('/api/predict/<version>', methods=['POST'])
+@predict_bp.route('/predict/<version>', methods=['POST'])
 def predict(version):
     data = request.json
     model = get_model(version)

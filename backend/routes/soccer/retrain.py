@@ -3,11 +3,11 @@ import subprocess
 
 retrain_bp = Blueprint('retrain', __name__)
 
-@retrain_bp.route('/api/retrain', methods=['POST'])
+@retrain_bp.route('/retrain', methods=['POST'])
 def retrain_model():
     try:
         result = subprocess.run(
-            ['python', 'retrain_model.py'],
+            ['python', 'models/soccer/retrain_model.py'],
             capture_output=True,
             text=True
         )
